@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.navbar {
+  background: #5f27cd;
+  width: 100%;
+  height: 60px;
+}
+
+.navbar nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar nav .logo a {
+  font-size: 25px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar nav ul li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.navbar nav ul li a,
+button {
+  background: white;
+  padding: 5px 10px;
+  font-size: 16px;
+  text-decoration: none;
+  margin: 0px 3px;
+  color: #5f27cd;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar nav ul li a.active {
+  outline: 2px solid black;
+}
+
+.form_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login_container,
+.signup_container {
+  height: 85vh;
+}
+
+.form_container form {
+  background: #5f27cd;
+  max-width: 300px;
+  padding: 7px;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  margin: 10px;
+}
+
+.form_container form h2 {
+  font-weight: 100;
+  color: white;
+}
+
+.form_container form h2::after {
+  content: "";
+  display: block;
+  background: white;
+  height: 2px;
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.form_container form input {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 15px;
+  border: none;
+  margin-top: 2px;
+  outline: none;
+}
+
+.form_container form input:focus {
+  outline: 1px solid black;
+}
+
+.form_container form input:nth-child(2) {
+  border-radius: 7px 7px 0px 0px;
+}
+
+.form_container form input:last-child {
+  border-radius: 0px 0px 7px 7px;
+}
+
+.form_container form input[type="submit"] {
+  background: white;
+  cursor: pointer;
+}
+
+.form_container form input[type="submit"]:focus {
+  outline: none;
+}
+
+.dashboard_form_container {
+  display: block;
+}
+
+.dashboard_form_container form {
+  max-width: 700px !important;
+  margin: 10px auto;
+}
+
+.notes {
+  max-width: 700px !important;
+  margin: 10px auto;
+  background: #5f27cd;
+  padding: 7px;
+  border-radius: 7px;
+}
+
+.notes .title,
+.date,
+.description {
+  color: white;
+}
+
+.notes .title::after,
+.description::after {
+  content: "";
+  display: block;
+  background: white;
+  height: 1px;
+  width: 100%;
+  margin: 4px 0px;
+}
+
+
+.notes .delete_btn {
+  background: #EA2027;
+  color: white;
+  padding: 5px 10px;
+  font-size: 15px;
+  border: none;
+  margin: 4px 0px 2px 0px;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+@media screen and (max-width:715px) {
+
+  .dashboard_form_container form,
+  .notes {
+    margin: 10px;
+  }
+}
