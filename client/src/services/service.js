@@ -1,5 +1,5 @@
 const API_KEY = () => {
-    if (!process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development") {
         return process.env.REACT_APP_API_URL;
     } else {
         return `${process.env.PUBLIC_URL}/api`
