@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { verify, API_KEY } from '../services/service';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
+import Loader from '../services/loader';
 
 const Signup = () => {
 
@@ -13,9 +14,11 @@ const Signup = () => {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [loader, setLoader] = useState(false)
 
     const formHandler = async (e) => {
         e.preventDefault()
+        setLoader(true)
         const resp = await fetch(`${API_KEY()}/signup`, {
             method: "POST",
             headers: {
@@ -23,6 +26,7 @@ const Signup = () => {
             },
             body: JSON.stringify({ name, email, password })
         })
+        setLoader(false)
         const data = await resp.json()
         if (data['status'] === 201) {
             notifySuccess(data['msg'])
@@ -47,6 +51,7 @@ const Signup = () => {
     return (
         <>
             <Navbar />
+            {loader && <Loader />}
             <div className="form_container signup_container">
                 <form onSubmit={formHandler}>
                     <h2>Sign Up</h2>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { verify ,API_KEY} from '../services/service';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
+import Loader from '../services/loader';
 
 const Login = () => {
 
@@ -12,9 +13,11 @@ const Login = () => {
     const Navigate = useNavigate()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [loader, setLoader] = useState(false)
 
     const formHandler = async (e) => {
         e.preventDefault()
+        setLoader(true)
         const resp = await fetch(`${API_KEY()}/login`, {
             method: "POST",
             headers: {
@@ -22,6 +25,7 @@ const Login = () => {
             },
             body: JSON.stringify({ email, password })
         })
+        setLoader(false)
         const data = await resp.json()
         if (data['status'] === 200) {
             Navigate('/')
@@ -49,6 +53,7 @@ const Login = () => {
     return (
         <>
             <Navbar />
+            {loader && <Loader />}
             <div className="form_container login_container">
                 <form onSubmit={formHandler}>
                     <h2>Login</h2>

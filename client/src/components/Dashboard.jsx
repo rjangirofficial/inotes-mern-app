@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { verify, API_KEY } from '../services/service';
 import Navbar from '../components/Navbar';
 import todayDate from 'date-and-time';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
+import Loader from '../services/loader';
 
 const Dashboard = () => {
 
@@ -15,6 +16,7 @@ const Dashboard = () => {
     const [apiData, setApiData] = useState([])
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+    const [loader, setLoader] = useState(false)
 
     const verifyUser = async () => {
         try {
@@ -33,6 +35,7 @@ const Dashboard = () => {
     const fetchApiData = async () => {
         try {
             const token = localStorage.getItem('token')
+            setLoader(true)
             const resp = await fetch(`${API_KEY()}/addnotes`, {
                 method: "GET",
                 headers: {
@@ -40,6 +43,7 @@ const Dashboard = () => {
                     "token": token
                 }
             })
+            setLoader(false)
             const data = await resp.json()
             setApiData(data)
         } catch (error) {
@@ -52,15 +56,16 @@ const Dashboard = () => {
         try {
             const date = todayDate.format(now, 'hh:mm A MMM DD YYYY');
             const token = localStorage.getItem('token')
+            setLoader(true)
             const resp = await fetch(`${API_KEY()}/addnotes`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "token": token
                 },
-
                 body: JSON.stringify({ title, description, date })
             })
+            setLoader(false)
             const data = await resp.json()
             if (data['status'] === 201) {
                 notifySuccess("Successfully Note Added")
@@ -76,12 +81,14 @@ const Dashboard = () => {
     const deleteNote = async (id) => {
         try {
             const token = localStorage.getItem('token')
+            setLoader(true)
             const resp = await fetch(`${API_KEY()}/deletenote/${id}`, {
                 method: "DELETE",
                 headers: {
                     "token": token
                 }
             })
+            setLoader(false)
             const data = await resp.json()
             if (data['status'] === 200) {
                 fetchApiData()
@@ -101,6 +108,9 @@ const Dashboard = () => {
     return (
         <>
             <Navbar />
+
+            {loader && <Loader />}
+
             <div className="form_container dashboard_form_container">
                 <form onSubmit={formHandler} >
                     <h2>Add Notes</h2>
