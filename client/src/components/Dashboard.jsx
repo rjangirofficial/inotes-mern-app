@@ -76,7 +76,7 @@ const Dashboard = () => {
     const deleteNote = async (id) => {
         try {
             const token = localStorage.getItem('token')
-            const resp = await fetch(`${API_KEY}/api/deletenote/${id}`, {
+            const resp = await fetch(`${API_KEY}/deletenote/${id}`, {
                 method: "DELETE",
                 headers: {
                     "token": token

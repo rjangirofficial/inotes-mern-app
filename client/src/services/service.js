@@ -22,6 +22,8 @@ const verify = async () => {
 const API_KEY = () => {
     if (process.env.NODE_ENV === "development") {
         process.env.REACT_APP_API_URL
+    } else {
+        "/api"
     }
 }
 
