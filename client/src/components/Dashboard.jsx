@@ -33,7 +33,7 @@ const Dashboard = () => {
     const fetchApiData = async () => {
         try {
             const token = localStorage.getItem('token')
-            const resp = await fetch(`${process.env.REACT_APP_API_KEY}/api/addnotes`, {
+            const resp = await fetch(`${process.env.REACT_APP_API_KEY}api/addnotes`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const Dashboard = () => {
         try {
             const date = todayDate.format(now, 'hh:mm A MMM DD YYYY');
             const token = localStorage.getItem('token')
-            const resp = await fetch(`${process.env.REACT_APP_API_KEY}/api/addnotes`, {
+            const resp = await fetch(`${process.env.REACT_APP_API_KEY}api/addnotes`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const Dashboard = () => {
     const deleteNote = async (id) => {
         try {
             const token = localStorage.getItem('token')
-            const resp = await fetch(`${process.env.REACT_APP_API_KEY}/api/deletenote/${id}`, {
+            const resp = await fetch(`${process.env.REACT_APP_API_KEY}api/deletenote/${id}`, {
                 method: "DELETE",
                 headers: {
                     "token": token
