@@ -15,7 +15,7 @@ const Login = () => {
 
     const formHandler = async (e) => {
         e.preventDefault()
-        const resp = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
+        const resp = await fetch(`/api/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
