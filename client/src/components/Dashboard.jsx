@@ -109,7 +109,6 @@ const Dashboard = () => {
         <>
             <Navbar />
 
-            {loader && <Loader />}
 
             <div className="form_container dashboard_form_container">
                 <form onSubmit={formHandler} >
@@ -120,6 +119,7 @@ const Dashboard = () => {
                 </form>
             </div>
 
+            {loader && <Loader />}
 
             {
                 apiData.map((item, index) => {
