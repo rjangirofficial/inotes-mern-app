@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
-import verify from '../services/service';
+import { verify } from '../services/service';
 import { toast } from 'react-toastify';
 
 const Navbar = () => {

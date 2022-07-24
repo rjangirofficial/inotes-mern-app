@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { verify } from '../services/service';
+import { verify ,API_KEY} from '../services/service';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
 
@@ -15,7 +15,7 @@ const Login = () => {
 
     const formHandler = async (e) => {
         e.preventDefault()
-        const resp = await fetch(`/api/login`, {
+        const resp = await fetch(`${API_KEY()}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
